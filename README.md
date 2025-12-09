@@ -59,7 +59,7 @@ python run_pipeline.py
 
 # 3. View results
 ls outputs/visualizations/
-cat outputs/recommendations/recommendations_summary.txt
+cat outputs/recommendations/recommendations.json
 
 # 4. Clean outputs (if needed)
 ./clean.sh
@@ -75,14 +75,14 @@ source venv/bin/activate
 pip install numpy scipy scikit-learn matplotlib seaborn sqlparse networkx loguru gudhi tqdm pillow pandas jupyter nbformat
 
 # 2. Launch Jupyter
-jupyter notebook topoquery_demo.ipynb
+jupyter notebook demo.ipynb
 
 # 3. Run cells interactively!
 ```
 
-The **Jupyter notebook** (`topoquery_demo.ipynb`) provides an interactive, step-by-step demonstration of the entire TopoQuery system with visualizations and explanations.
+The **Jupyter notebook** (`demo.ipynb`) provides an interactive, step-by-step demonstration of the entire TopoQuery system with visualizations and explanations.
 
-**Done!** Takes ~2 minutes. Generates 14 visualizations and topological recommendations.
+**Done!** Takes ~2 minutes. Generates 13 visualizations and topological recommendations.
 
 ---
 
@@ -97,7 +97,7 @@ Applies **persistent homology** (via HOLE library) to analyze SQL query patterns
 3. **Extract Features** - Structural, semantic, and contextual features
 4. **Topological Analysis** - Persistent homology using HOLE library
 5. **Recommendations** - Find topologically similar queries
-6. **Visualizations** - 14 plots showing topological structure
+6. **Visualizations** - 13 plots showing topological structure
 
 ### Key Innovation
 
@@ -139,7 +139,7 @@ plot_persistence_barcode()      # Feature lifetimes
 
 ## Outputs
 
-### 14 Visualizations (`outputs/visualizations/`)
+### 13 Visualizations (`outputs/visualizations/`)
 
 **Persistent Homology (HOLE):**
 - `persistence_diagram_*.png` (3) - Topological features (birth vs death)
@@ -151,8 +151,7 @@ plot_persistence_barcode()      # Feature lifetimes
 - `pca_projection.png` - Variance-based 2D view
 
 ### Recommendations (`outputs/recommendations/`)
-- `recommendations.json` - Structured data
-- `recommendations_summary.txt` - Human-readable examples
+- `recommendations.json` - Structured recommendation data with explanations
 
 ### Data Files
 - `data/penguins.db` - SQLite database
@@ -225,7 +224,7 @@ GROUP BY species
 ## Project Structure
 
 ```
-explainable-recs/
+topoquery/
 ├── create_database.py       # Step 1: SQLite DB creation
 ├── generate_queries.py      # Step 2: Generate 31 queries
 ├── parse_queries.py         # Step 3: Feature extraction
@@ -234,14 +233,15 @@ explainable-recs/
 ├── visualize_results.py     # Step 6: HOLE visualizations
 ├── run_pipeline.py          # Run all steps
 ├── clean.sh                 # Clean all generated files
+├── demo.ipynb               # Interactive Jupyter demo
 ├── README.md                # This file
 ├── .gitignore              
 ├── data/penguins.db         # Generated
 ├── queries/                 # Generated
 └── outputs/                 # Generated
-    ├── visualizations/      # 14 PNGs
-    ├── recommendations/     # JSON + text
-    └── INTERPRETATION_GUIDE.md
+    ├── visualizations/      # 13 PNGs
+    ├── recommendations/     # JSON
+    └── topological_features.json
 ```
 
 ---
@@ -288,9 +288,13 @@ pillow>=9.0.0
 **Fix:** Activate venv first: `source venv/bin/activate`
 
 **Problem:** Cannot import from HOLE  
-**Fix:** Update HOLE path in `topological_analysis.py` and `visualize_results.py` line 2:
-```python
-sys.path.insert(0, '/your/path/to/hole')
+**Fix:** Set the HOLE_PATH environment variable or ensure HOLE is installed:
+```bash
+# Option 1: Set environment variable
+export HOLE_PATH=/path/to/hole
+
+# Option 2: Install HOLE in the same parent directory
+cd .. && git clone https://github.com/FoxHound0x00/hole
 ```
 
 **Problem:** No visualizations generated  
@@ -370,16 +374,14 @@ This project is built on:
 ## Stats
 
 - **Code:** ~1,400 lines of clean Python
-- **Scripts:** 7 modular files
+- **Scripts:** 6 core Python files + 1 interactive notebook
 - **Queries:** 31 diverse SQL patterns
-- **Visualizations:** 14 using HOLE library
+- **Visualizations:** 13 using HOLE library
 - **Runtime:** ~2 minutes for complete pipeline
 
 ---
 
 **Just run `python run_pipeline.py` and explore the outputs!**
-
-For detailed interpretation of results, see `outputs/INTERPRETATION_GUIDE.md`.
 
 ---
 
@@ -387,7 +389,7 @@ For detailed interpretation of results, see `outputs/INTERPRETATION_GUIDE.md`.
 
 - 🌐 **GitHub Repository**: [github.com/FoxHound0x00/topoquery](https://github.com/FoxHound0x00/topoquery)
 - 📄 **Demo Paper**: [topoquery-paper/](../topoquery-paper/) - Full SIGMOD demo paper with evaluation
-- 📓 **Interactive Notebook**: [topoquery_demo.ipynb](topoquery_demo.ipynb) - Jupyter notebook walkthrough
+- 📓 **Interactive Notebook**: [demo.ipynb](demo.ipynb) - Jupyter notebook walkthrough
 - 🔬 **HOLE Library**: [github.com/FoxHound0x00/hole](https://github.com/FoxHound0x00/hole) - Core TDA framework
 - 🐧 **Dataset**: [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/) - Example workload
 
@@ -407,7 +409,7 @@ Email: sud.athreya@utah.edu
 
 ## License
 
-MIT License - See [LICENSE](LICENSE) file for details.
+MIT License
 
 ---
 

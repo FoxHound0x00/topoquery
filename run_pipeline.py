@@ -53,7 +53,6 @@ def main():
     print("  - queries/           : Generated queries and features")
     print("  - outputs/visualizations/  : Plots and heatmaps")
     print("  - outputs/recommendations/ : Recommendation results")
-    print("  - outputs/INTERPRETATION_GUIDE.md : Comprehensive guide")
     print()
 
 if __name__ == '__main__':

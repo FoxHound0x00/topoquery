@@ -385,8 +385,8 @@
       "user": "Dr. Palmer",
       "timestamp": "2024-01-17 11:30:00",
       "tables": [
-        "species_info",
-        "penguins"
+        "penguins",
+        "species_info"
       ],
       "columns": [
         "body_mass_g",

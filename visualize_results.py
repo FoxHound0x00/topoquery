@@ -3,7 +3,12 @@ Complete visualization using HOLE library for persistent homology
 Built on top of hole's persistent homology analysis
 """
 import sys
-sys.path.insert(0, '/home/sud/Documents/sud_files/Documents/repos/F26/code/hole')
+import os
+
+# Add HOLE library to path (adjust if needed)
+hole_path = os.environ.get('HOLE_PATH', '../hole')
+if os.path.exists(hole_path):
+    sys.path.insert(0, hole_path)
 
 import json
 import numpy as np
