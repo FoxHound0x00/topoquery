@@ -3,6 +3,7 @@
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![HOLE](https://img.shields.io/badge/Powered%20by-HOLE-green.svg)](https://github.com/FoxHound0x00/hole)
+[![GitHub](https://img.shields.io/badge/GitHub-TopoQuery-blue.svg)](https://github.com/FoxHound0x00/topoquery)
 
 **A novel query recommendation system that leverages topological data analysis (TDA) and persistent homology to generate explainable, multi-scale SQL query recommendations.**
 
@@ -384,6 +385,7 @@ For detailed interpretation of results, see `outputs/INTERPRETATION_GUIDE.md`.
 
 ## Links & Resources
 
+- 🌐 **GitHub Repository**: [github.com/FoxHound0x00/topoquery](https://github.com/FoxHound0x00/topoquery)
 - 📄 **Demo Paper**: [topoquery-paper/](../topoquery-paper/) - Full SIGMOD demo paper with evaluation
 - 📓 **Interactive Notebook**: [topoquery_demo.ipynb](topoquery_demo.ipynb) - Jupyter notebook walkthrough
 - 🔬 **HOLE Library**: [github.com/FoxHound0x00/hole](https://github.com/FoxHound0x00/hole) - Core TDA framework
