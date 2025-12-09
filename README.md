@@ -1,8 +1,40 @@
 # TopoQuery: Explainable Query Recommendations via Persistent Homology
 
-**Topological data analysis of SQL queries using the HOLE library**
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![HOLE](https://img.shields.io/badge/Powered%20by-HOLE-green.svg)](https://github.com/FoxHound0x00/hole)
 
-A novel query recommendation system that leverages persistent homology to identify multi-scale topological patterns in SQL workloads and generate explainable recommendations.
+**A novel query recommendation system that leverages topological data analysis (TDA) and persistent homology to generate explainable, multi-scale SQL query recommendations.**
+
+> **Built with [HOLE](https://github.com/FoxHound0x00/hole)**: Homological Observation of Latent Embeddings - A Python library for topological data analysis and visualization using persistent homology.
+
+---
+
+## 🎯 Overview
+
+TopoQuery applies **persistent homology**—a technique from topological data analysis—to model SQL query workloads as high-dimensional point clouds. By identifying stable topological features (connected components, loops, voids) that persist across multiple distance scales, TopoQuery reveals structural patterns in query relationships that traditional syntax-based or statistical methods miss.
+
+### Key Features
+
+- 🔬 **Persistent Homology Analysis**: Identifies stable query clusters across multiple distance scales
+- 📊 **Multi-Metric Distance Computation**: Euclidean, Cosine, and Mahalanobis distance metrics
+- 🎨 **Rich Visualizations**: Persistence diagrams, barcodes, PCA/MDS projections, heatmaps
+- 💡 **Explainable Recommendations**: Visual explanations showing *why* queries are topologically similar
+- 📓 **Interactive Jupyter Notebook**: Step-by-step demo with inline visualizations
+- 🐧 **Real Dataset**: Palmer Penguins dataset with 31 diverse SQL queries
+
+### Why Topological Data Analysis?
+
+Traditional query recommendation systems rely on:
+- **Syntactic similarity**: Edit distance on SQL strings (misses semantic patterns)
+- **Co-occurrence**: Collaborative filtering (requires large training data)
+- **Embeddings**: Neural network representations (lack interpretability)
+
+TopoQuery is different:
+- **Multi-scale**: Captures relationships at different granularities simultaneously
+- **Explainable**: Provides visual and quantitative justifications
+- **Robust**: Identifies stable patterns that persist across noise and variations
+- **Unsupervised**: No training data required, works on any SQL workload
 
 ## Quick Start
 
@@ -13,7 +45,13 @@ A novel query recommendation system that leverages persistent homology to identi
 cd topoquery
 python3 -m venv venv
 source venv/bin/activate
+
+# Install dependencies (includes HOLE library dependencies)
 pip install numpy scipy scikit-learn matplotlib seaborn sqlparse networkx loguru gudhi tqdm pillow pandas
+
+# Optional: Install HOLE library for enhanced visualizations
+# git clone https://github.com/FoxHound0x00/hole
+# cd hole && pip install -e . && cd ..
 
 # 2. Run the complete pipeline
 python run_pipeline.py
@@ -68,7 +106,7 @@ Traditional query similarity uses string matching or syntax trees. We use **pers
 
 ## HOLE Library Integration
 
-This project extensively uses **10+ functions** from the HOLE library:
+This project is built on top of the **[HOLE library](https://github.com/FoxHound0x00/hole)** (Homological Observation of Latent Embeddings), extensively using **10+ functions** for persistent homology computation and visualization:
 
 ### Core Persistent Homology (`hole.core.persistence`)
 
@@ -298,10 +336,33 @@ Each query → 41-dimensional vector encoding all features
 
 ## Citation
 
-This project uses:
-- **HOLE library** - Persistent homology framework (your library)
-- **Palmer Penguins dataset** - Horst, Hill, & Gorman (2020)
-- **GUDHI** - Computational topology library (via HOLE)
+If you use TopoQuery in your research, please cite:
+
+```bibtex
+@inproceedings{topoquery2024,
+  title={TopoQuery: Explainable Query Recommendations via Persistent Homology},
+  author={Athreya, Sudhanva M},
+  booktitle={Demonstration, SIGMOD Conference},
+  year={2024},
+  organization={ACM}
+}
+```
+
+### Dependencies & Acknowledgments
+
+This project is built on:
+- **[HOLE library](https://github.com/FoxHound0x00/hole)** - Homological Observation of Latent Embeddings for persistent homology computation
+- **[GUDHI](https://gudhi.inria.fr/)** - Computational topology library (via HOLE)
+- **[Palmer Penguins dataset](https://allisonhorst.github.io/palmerpenguins/)** - Horst, Hill, & Gorman (2020)
+
+```bibtex
+@software{hole2024,
+  title={HOLE: Homological Observation of Latent Embeddings},
+  author={Athreya, Sudhanva M and Rosen, Paul},
+  year={2024},
+  url={https://github.com/FoxHound0x00/hole}
+}
+```
 
 ---
 
@@ -318,3 +379,36 @@ This project uses:
 **Just run `python run_pipeline.py` and explore the outputs!**
 
 For detailed interpretation of results, see `outputs/INTERPRETATION_GUIDE.md`.
+
+---
+
+## Links & Resources
+
+- 📄 **Demo Paper**: [topoquery-paper/](../topoquery-paper/) - Full SIGMOD demo paper with evaluation
+- 📓 **Interactive Notebook**: [topoquery_demo.ipynb](topoquery_demo.ipynb) - Jupyter notebook walkthrough
+- 🔬 **HOLE Library**: [github.com/FoxHound0x00/hole](https://github.com/FoxHound0x00/hole) - Core TDA framework
+- 🐧 **Dataset**: [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/) - Example workload
+
+---
+
+## Authors
+
+**Sudhanva M Athreya**  
+University of Utah  
+Email: sud.athreya@utah.edu
+
+**Course**: CS 6360 - Advanced Database Systems  
+**Instructor**: Prof. Aditya Parameswaran  
+**Semester**: Fall 2024
+
+---
+
+## License
+
+MIT License - See [LICENSE](LICENSE) file for details.
+
+---
+
+<p align="center">
+  <strong>Built with ❤️ using <a href="https://github.com/FoxHound0x00/hole">HOLE</a></strong>
+</p>
