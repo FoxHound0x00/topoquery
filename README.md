@@ -8,7 +8,7 @@ A novel query recommendation system that leverages persistent homology to identi
 
 ```bash
 # 1. Setup
-cd topoquery-system
+cd topoquery
 python3 -m venv venv
 source venv/bin/activate
 pip install numpy scipy scikit-learn matplotlib seaborn sqlparse networkx loguru gudhi tqdm pillow pandas
