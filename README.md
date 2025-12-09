@@ -6,6 +6,8 @@ A novel query recommendation system that leverages persistent homology to identi
 
 ## Quick Start
 
+### Option 1: Run Complete Pipeline (Command Line)
+
 ```bash
 # 1. Setup
 cd topoquery
@@ -23,6 +25,23 @@ cat outputs/recommendations/recommendations_summary.txt
 # 4. Clean outputs (if needed)
 ./clean.sh
 ```
+
+### Option 2: Interactive Jupyter Notebook 📓
+
+```bash
+# 1. Setup (same as above)
+cd topoquery
+python3 -m venv venv
+source venv/bin/activate
+pip install numpy scipy scikit-learn matplotlib seaborn sqlparse networkx loguru gudhi tqdm pillow pandas jupyter nbformat
+
+# 2. Launch Jupyter
+jupyter notebook topoquery_demo.ipynb
+
+# 3. Run cells interactively!
+```
+
+The **Jupyter notebook** (`topoquery_demo.ipynb`) provides an interactive, step-by-step demonstration of the entire TopoQuery system with visualizations and explanations.
 
 **Done!** Takes ~2 minutes. Generates 14 visualizations and topological recommendations.
 
