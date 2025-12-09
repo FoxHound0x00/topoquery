@@ -1,0 +1,210 @@
+================================================================================
+ TOPOLOGICAL QUERY RECOMMENDATIONS
+ Built on HOLE library persistent homology
+================================================================================
+
+
+================================================================================
+QUERY 0: Get all Adelie penguin observations
+================================================================================
+SQL: SELECT * FROM penguins WHERE species = "Adelie"
+Type: FILTER
+
+Recommendations (EUCLIDEAN):
+--------------------------------------------------------------------------------
+1. Q20: Average bill length by species for larger penguins
+   Topologically similar (euclidean distance: 7.867): share columns: species; same analyst (Dr. Gorman)
+
+2. Q1: Get all Chinstrap penguin observations
+   Topologically similar (euclidean distance: 8.004): same query pattern (FILTER); share columns: species; same analyst (Dr. Gorman)
+
+3. Q5: Average bill length by species
+   Topologically similar (euclidean distance: 8.249): share columns: species; same analyst (Dr. Gorman)
+
+Recommendations (COSINE):
+--------------------------------------------------------------------------------
+1. Q1: Get all Chinstrap penguin observations
+   Topologically similar (cosine distance: 0.632): same query pattern (FILTER); share columns: species; same analyst (Dr. Gorman)
+
+2. Q2: Get all Gentoo penguin observations
+   Topologically similar (cosine distance: 0.746): same query pattern (FILTER); share columns: species
+
+3. Q3: Get all observations from Torgersen island
+   Topologically similar (cosine distance: 0.797): same query pattern (FILTER)
+
+Recommendations (MAHALANOBIS):
+--------------------------------------------------------------------------------
+1. Q1: Get all Chinstrap penguin observations
+   Topologically similar (mahalanobis distance: 0.000): same query pattern (FILTER); share columns: species; same analyst (Dr. Gorman)
+
+2. Q2: Get all Gentoo penguin observations
+   Topologically similar (mahalanobis distance: 2.841): same query pattern (FILTER); share columns: species
+
+3. Q20: Average bill length by species for larger penguins
+   Topologically similar (mahalanobis distance: 3.292): share columns: species; same analyst (Dr. Gorman)
+
+
+================================================================================
+QUERY 5: Average bill length by species
+================================================================================
+SQL: SELECT species, AVG(bill_length_mm) FROM penguins GROUP BY species
+Type: AGGREGATION
+
+Recommendations (EUCLIDEAN):
+--------------------------------------------------------------------------------
+1. Q20: Average bill length by species for larger penguins
+   Topologically similar (euclidean distance: 2.479): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG); same analyst (Dr. Gorman)
+
+2. Q14: Average bill length by island and species
+   Topologically similar (euclidean distance: 4.506): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG)
+
+3. Q8: Average body mass by species
+   Topologically similar (euclidean distance: 4.586): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (AVG)
+
+Recommendations (COSINE):
+--------------------------------------------------------------------------------
+1. Q20: Average bill length by species for larger penguins
+   Topologically similar (cosine distance: 0.191): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG); same analyst (Dr. Gorman)
+
+2. Q6: Average bill depth by species
+   Topologically similar (cosine distance: 0.518): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (AVG); same analyst (Dr. Gorman)
+
+3. Q14: Average bill length by island and species
+   Topologically similar (cosine distance: 0.556): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG)
+
+Recommendations (MAHALANOBIS):
+--------------------------------------------------------------------------------
+1. Q20: Average bill length by species for larger penguins
+   Topologically similar (mahalanobis distance: 0.682): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG); same analyst (Dr. Gorman)
+
+2. Q6: Average bill depth by species
+   Topologically similar (mahalanobis distance: 1.151): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (AVG); same analyst (Dr. Gorman)
+
+3. Q14: Average bill length by island and species
+   Topologically similar (mahalanobis distance: 2.136): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG)
+
+
+================================================================================
+QUERY 12: Species distribution across islands
+================================================================================
+SQL: SELECT species, island, COUNT(*) FROM penguins GROUP BY species, island
+Type: AGGREGATION
+
+Recommendations (EUCLIDEAN):
+--------------------------------------------------------------------------------
+1. Q10: Count observations per island
+   Topologically similar (euclidean distance: 2.712): same query pattern (AGGREGATION); both aggregate data; share columns: island; use similar aggregations (COUNT); same analyst (Dr. Fraser)
+
+2. Q14: Average bill length by island and species
+   Topologically similar (euclidean distance: 4.240): same query pattern (AGGREGATION); both aggregate data; share columns: island, species; same analyst (Dr. Fraser)
+
+3. Q9: Count observations per species
+   Topologically similar (euclidean distance: 4.581): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (COUNT)
+
+Recommendations (COSINE):
+--------------------------------------------------------------------------------
+1. Q10: Count observations per island
+   Topologically similar (cosine distance: 0.176): same query pattern (AGGREGATION); both aggregate data; share columns: island; use similar aggregations (COUNT); same analyst (Dr. Fraser)
+
+2. Q14: Average bill length by island and species
+   Topologically similar (cosine distance: 0.422): same query pattern (AGGREGATION); both aggregate data; share columns: island, species; same analyst (Dr. Fraser)
+
+3. Q9: Count observations per species
+   Topologically similar (cosine distance: 0.545): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (COUNT)
+
+Recommendations (MAHALANOBIS):
+--------------------------------------------------------------------------------
+1. Q10: Count observations per island
+   Topologically similar (mahalanobis distance: 1.301): same query pattern (AGGREGATION); both aggregate data; share columns: island; use similar aggregations (COUNT); same analyst (Dr. Fraser)
+
+2. Q14: Average bill length by island and species
+   Topologically similar (mahalanobis distance: 2.102): same query pattern (AGGREGATION); both aggregate data; share columns: island, species; same analyst (Dr. Fraser)
+
+3. Q9: Count observations per species
+   Topologically similar (mahalanobis distance: 2.504): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (COUNT)
+
+
+================================================================================
+QUERY 15: Average body mass with scientific names
+================================================================================
+SQL: SELECT p.species, s.scientific_name, AVG(p.body_mass_g) 
+                     FROM penguins p JOIN species_info s ON p.species = s.species 
+                     GROUP BY p.species
+Type: JOIN
+
+Recommendations (EUCLIDEAN):
+--------------------------------------------------------------------------------
+1. Q17: Average flipper length with habitat info
+   Topologically similar (euclidean distance: 9.710): same query pattern (JOIN); both use joins; both aggregate data; share columns: p, species; use similar aggregations (AVG)
+
+2. Q8: Average body mass by species
+   Topologically similar (euclidean distance: 10.229): both aggregate data; share columns: body_mass_g, species; use similar aggregations (AVG)
+
+3. Q26: Average body mass by researcher and species
+   Topologically similar (euclidean distance: 10.358): both aggregate data; share columns: body_mass_g, species; use similar aggregations (AVG); same analyst (Dr. Palmer)
+
+Recommendations (COSINE):
+--------------------------------------------------------------------------------
+1. Q17: Average flipper length with habitat info
+   Topologically similar (cosine distance: 0.494): same query pattern (JOIN); both use joins; both aggregate data; share columns: p, species; use similar aggregations (AVG)
+
+2. Q16: Observation counts with island area
+   Topologically similar (cosine distance: 0.716): same query pattern (JOIN); both use joins; both aggregate data; share columns: p
+
+3. Q26: Average body mass by researcher and species
+   Topologically similar (cosine distance: 0.840): both aggregate data; share columns: body_mass_g, species; use similar aggregations (AVG); same analyst (Dr. Palmer)
+
+Recommendations (MAHALANOBIS):
+--------------------------------------------------------------------------------
+1. Q26: Average body mass by researcher and species
+   Topologically similar (mahalanobis distance: 4.114): both aggregate data; share columns: body_mass_g, species; use similar aggregations (AVG); same analyst (Dr. Palmer)
+
+2. Q8: Average body mass by species
+   Topologically similar (mahalanobis distance: 4.777): both aggregate data; share columns: body_mass_g, species; use similar aggregations (AVG)
+
+3. Q18: Average bill length for heavy penguins
+   Topologically similar (mahalanobis distance: 4.963): share columns: body_mass_g; use similar aggregations (AVG)
+
+
+================================================================================
+QUERY 20: Average bill length by species for larger penguins
+================================================================================
+SQL: SELECT species, AVG(bill_length_mm) 
+                     FROM penguins 
+                     WHERE body_mass_g > 3500 
+                     GROUP BY species
+Type: AGGREGATION
+
+Recommendations (EUCLIDEAN):
+--------------------------------------------------------------------------------
+1. Q5: Average bill length by species
+   Topologically similar (euclidean distance: 2.479): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG); same analyst (Dr. Gorman)
+
+2. Q14: Average bill length by island and species
+   Topologically similar (euclidean distance: 5.143): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG)
+
+3. Q8: Average body mass by species
+   Topologically similar (euclidean distance: 5.213): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (AVG)
+
+Recommendations (COSINE):
+--------------------------------------------------------------------------------
+1. Q5: Average bill length by species
+   Topologically similar (cosine distance: 0.191): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG); same analyst (Dr. Gorman)
+
+2. Q18: Average bill length for heavy penguins
+   Topologically similar (cosine distance: 0.564): share columns: bill_length_mm; use similar aggregations (AVG); same analyst (Dr. Gorman)
+
+3. Q6: Average bill depth by species
+   Topologically similar (cosine distance: 0.649): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (AVG); same analyst (Dr. Gorman)
+
+Recommendations (MAHALANOBIS):
+--------------------------------------------------------------------------------
+1. Q5: Average bill length by species
+   Topologically similar (mahalanobis distance: 0.682): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG); same analyst (Dr. Gorman)
+
+2. Q6: Average bill depth by species
+   Topologically similar (mahalanobis distance: 1.302): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (AVG); same analyst (Dr. Gorman)
+
+3. Q14: Average bill length by island and species
+   Topologically similar (mahalanobis distance: 2.324): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG)
+

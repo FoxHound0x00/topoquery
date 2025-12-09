@@ -1,0 +1,640 @@
+{
+  "query_0": {
+    "query": {
+      "sql": "SELECT * FROM penguins WHERE species = \"Adelie\"",
+      "description": "Get all Adelie penguin observations",
+      "user": "Dr. Gorman",
+      "timestamp": "2024-01-15 09:00:00",
+      "tables": [
+        "penguins"
+      ],
+      "columns": [
+        "Adelie",
+        "species"
+      ],
+      "has_join": false,
+      "has_where": true,
+      "has_group_by": false,
+      "has_order_by": false,
+      "has_limit": false,
+      "num_conditions": 1,
+      "aggregations": [],
+      "query_type": "FILTER",
+      "column_types": {
+        "Adelie": "unknown",
+        "species": "categorical"
+      }
+    },
+    "recommendations_by_metric": {
+      "euclidean": [
+        {
+          "query_idx": 20,
+          "distance": 7.8674010154197,
+          "explanation": "Topologically similar (euclidean distance: 7.867): share columns: species; same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(bill_length_mm) \n                     FROM penguins \n                     WHERE body_mass_g > 3500 \n                     GROUP BY species",
+            "description": "Average bill length by species for larger penguins",
+            "user": "Dr. Gorman"
+          }
+        },
+        {
+          "query_idx": 1,
+          "distance": 8.00416558216199,
+          "explanation": "Topologically similar (euclidean distance: 8.004): same query pattern (FILTER); share columns: species; same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT * FROM penguins WHERE species = \"Chinstrap\"",
+            "description": "Get all Chinstrap penguin observations",
+            "user": "Dr. Gorman"
+          }
+        },
+        {
+          "query_idx": 5,
+          "distance": 8.248784798473404,
+          "explanation": "Topologically similar (euclidean distance: 8.249): share columns: species; same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(bill_length_mm) FROM penguins GROUP BY species",
+            "description": "Average bill length by species",
+            "user": "Dr. Gorman"
+          }
+        }
+      ],
+      "cosine": [
+        {
+          "query_idx": 1,
+          "distance": 0.6324691394529319,
+          "explanation": "Topologically similar (cosine distance: 0.632): same query pattern (FILTER); share columns: species; same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT * FROM penguins WHERE species = \"Chinstrap\"",
+            "description": "Get all Chinstrap penguin observations",
+            "user": "Dr. Gorman"
+          }
+        },
+        {
+          "query_idx": 2,
+          "distance": 0.7457765934380289,
+          "explanation": "Topologically similar (cosine distance: 0.746): same query pattern (FILTER); share columns: species",
+          "recommended_query": {
+            "sql": "SELECT * FROM penguins WHERE species = \"Gentoo\"",
+            "description": "Get all Gentoo penguin observations",
+            "user": "Dr. Williams"
+          }
+        },
+        {
+          "query_idx": 3,
+          "distance": 0.7968046256484017,
+          "explanation": "Topologically similar (cosine distance: 0.797): same query pattern (FILTER)",
+          "recommended_query": {
+            "sql": "SELECT * FROM penguins WHERE island = \"Torgersen\"",
+            "description": "Get all observations from Torgersen island",
+            "user": "Dr. Fraser"
+          }
+        }
+      ],
+      "mahalanobis": [
+        {
+          "query_idx": 1,
+          "distance": 1.7775742636626475e-14,
+          "explanation": "Topologically similar (mahalanobis distance: 0.000): same query pattern (FILTER); share columns: species; same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT * FROM penguins WHERE species = \"Chinstrap\"",
+            "description": "Get all Chinstrap penguin observations",
+            "user": "Dr. Gorman"
+          }
+        },
+        {
+          "query_idx": 2,
+          "distance": 2.840687480374128,
+          "explanation": "Topologically similar (mahalanobis distance: 2.841): same query pattern (FILTER); share columns: species",
+          "recommended_query": {
+            "sql": "SELECT * FROM penguins WHERE species = \"Gentoo\"",
+            "description": "Get all Gentoo penguin observations",
+            "user": "Dr. Williams"
+          }
+        },
+        {
+          "query_idx": 20,
+          "distance": 3.2916360986435826,
+          "explanation": "Topologically similar (mahalanobis distance: 3.292): share columns: species; same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(bill_length_mm) \n                     FROM penguins \n                     WHERE body_mass_g > 3500 \n                     GROUP BY species",
+            "description": "Average bill length by species for larger penguins",
+            "user": "Dr. Gorman"
+          }
+        }
+      ]
+    }
+  },
+  "query_5": {
+    "query": {
+      "sql": "SELECT species, AVG(bill_length_mm) FROM penguins GROUP BY species",
+      "description": "Average bill length by species",
+      "user": "Dr. Gorman",
+      "timestamp": "2024-01-15 09:15:00",
+      "tables": [
+        "penguins"
+      ],
+      "columns": [
+        "bill_length_mm",
+        "species"
+      ],
+      "has_join": false,
+      "has_where": false,
+      "has_group_by": true,
+      "has_order_by": false,
+      "has_limit": false,
+      "num_conditions": 0,
+      "aggregations": [
+        "AVG"
+      ],
+      "query_type": "AGGREGATION",
+      "column_types": {
+        "bill_length_mm": "measurement",
+        "species": "categorical"
+      }
+    },
+    "recommendations_by_metric": {
+      "euclidean": [
+        {
+          "query_idx": 20,
+          "distance": 2.4792038871579267,
+          "explanation": "Topologically similar (euclidean distance: 2.479): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG); same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(bill_length_mm) \n                     FROM penguins \n                     WHERE body_mass_g > 3500 \n                     GROUP BY species",
+            "description": "Average bill length by species for larger penguins",
+            "user": "Dr. Gorman"
+          }
+        },
+        {
+          "query_idx": 14,
+          "distance": 4.505689421335127,
+          "explanation": "Topologically similar (euclidean distance: 4.506): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG)",
+          "recommended_query": {
+            "sql": "SELECT island, species, AVG(bill_length_mm) FROM penguins GROUP BY island, species",
+            "description": "Average bill length by island and species",
+            "user": "Dr. Fraser"
+          }
+        },
+        {
+          "query_idx": 8,
+          "distance": 4.586009604832346,
+          "explanation": "Topologically similar (euclidean distance: 4.586): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (AVG)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(body_mass_g) FROM penguins GROUP BY species",
+            "description": "Average body mass by species",
+            "user": "Dr. Williams"
+          }
+        }
+      ],
+      "cosine": [
+        {
+          "query_idx": 20,
+          "distance": 0.1914571037814614,
+          "explanation": "Topologically similar (cosine distance: 0.191): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG); same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(bill_length_mm) \n                     FROM penguins \n                     WHERE body_mass_g > 3500 \n                     GROUP BY species",
+            "description": "Average bill length by species for larger penguins",
+            "user": "Dr. Gorman"
+          }
+        },
+        {
+          "query_idx": 6,
+          "distance": 0.5184612077843602,
+          "explanation": "Topologically similar (cosine distance: 0.518): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (AVG); same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(bill_depth_mm) FROM penguins GROUP BY species",
+            "description": "Average bill depth by species",
+            "user": "Dr. Gorman"
+          }
+        },
+        {
+          "query_idx": 14,
+          "distance": 0.5562117389073183,
+          "explanation": "Topologically similar (cosine distance: 0.556): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG)",
+          "recommended_query": {
+            "sql": "SELECT island, species, AVG(bill_length_mm) FROM penguins GROUP BY island, species",
+            "description": "Average bill length by island and species",
+            "user": "Dr. Fraser"
+          }
+        }
+      ],
+      "mahalanobis": [
+        {
+          "query_idx": 20,
+          "distance": 0.682144946567711,
+          "explanation": "Topologically similar (mahalanobis distance: 0.682): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG); same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(bill_length_mm) \n                     FROM penguins \n                     WHERE body_mass_g > 3500 \n                     GROUP BY species",
+            "description": "Average bill length by species for larger penguins",
+            "user": "Dr. Gorman"
+          }
+        },
+        {
+          "query_idx": 6,
+          "distance": 1.150863652108913,
+          "explanation": "Topologically similar (mahalanobis distance: 1.151): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (AVG); same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(bill_depth_mm) FROM penguins GROUP BY species",
+            "description": "Average bill depth by species",
+            "user": "Dr. Gorman"
+          }
+        },
+        {
+          "query_idx": 14,
+          "distance": 2.1363413502767323,
+          "explanation": "Topologically similar (mahalanobis distance: 2.136): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG)",
+          "recommended_query": {
+            "sql": "SELECT island, species, AVG(bill_length_mm) FROM penguins GROUP BY island, species",
+            "description": "Average bill length by island and species",
+            "user": "Dr. Fraser"
+          }
+        }
+      ]
+    }
+  },
+  "query_12": {
+    "query": {
+      "sql": "SELECT species, island, COUNT(*) FROM penguins GROUP BY species, island",
+      "description": "Species distribution across islands",
+      "user": "Dr. Fraser",
+      "timestamp": "2024-01-16 09:00:00",
+      "tables": [
+        "penguins"
+      ],
+      "columns": [
+        "island",
+        "species"
+      ],
+      "has_join": false,
+      "has_where": false,
+      "has_group_by": true,
+      "has_order_by": false,
+      "has_limit": false,
+      "num_conditions": 0,
+      "aggregations": [
+        "COUNT"
+      ],
+      "query_type": "AGGREGATION",
+      "column_types": {
+        "island": "categorical",
+        "species": "categorical"
+      }
+    },
+    "recommendations_by_metric": {
+      "euclidean": [
+        {
+          "query_idx": 10,
+          "distance": 2.7120905509438185,
+          "explanation": "Topologically similar (euclidean distance: 2.712): same query pattern (AGGREGATION); both aggregate data; share columns: island; use similar aggregations (COUNT); same analyst (Dr. Fraser)",
+          "recommended_query": {
+            "sql": "SELECT island, COUNT(*) FROM penguins GROUP BY island",
+            "description": "Count observations per island",
+            "user": "Dr. Fraser"
+          }
+        },
+        {
+          "query_idx": 14,
+          "distance": 4.2403886004932705,
+          "explanation": "Topologically similar (euclidean distance: 4.240): same query pattern (AGGREGATION); both aggregate data; share columns: island, species; same analyst (Dr. Fraser)",
+          "recommended_query": {
+            "sql": "SELECT island, species, AVG(bill_length_mm) FROM penguins GROUP BY island, species",
+            "description": "Average bill length by island and species",
+            "user": "Dr. Fraser"
+          }
+        },
+        {
+          "query_idx": 9,
+          "distance": 4.5812297184227555,
+          "explanation": "Topologically similar (euclidean distance: 4.581): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (COUNT)",
+          "recommended_query": {
+            "sql": "SELECT species, COUNT(*) FROM penguins GROUP BY species",
+            "description": "Count observations per species",
+            "user": "Dr. Palmer"
+          }
+        }
+      ],
+      "cosine": [
+        {
+          "query_idx": 10,
+          "distance": 0.17638631017096218,
+          "explanation": "Topologically similar (cosine distance: 0.176): same query pattern (AGGREGATION); both aggregate data; share columns: island; use similar aggregations (COUNT); same analyst (Dr. Fraser)",
+          "recommended_query": {
+            "sql": "SELECT island, COUNT(*) FROM penguins GROUP BY island",
+            "description": "Count observations per island",
+            "user": "Dr. Fraser"
+          }
+        },
+        {
+          "query_idx": 14,
+          "distance": 0.42155665882232674,
+          "explanation": "Topologically similar (cosine distance: 0.422): same query pattern (AGGREGATION); both aggregate data; share columns: island, species; same analyst (Dr. Fraser)",
+          "recommended_query": {
+            "sql": "SELECT island, species, AVG(bill_length_mm) FROM penguins GROUP BY island, species",
+            "description": "Average bill length by island and species",
+            "user": "Dr. Fraser"
+          }
+        },
+        {
+          "query_idx": 9,
+          "distance": 0.5450467005318751,
+          "explanation": "Topologically similar (cosine distance: 0.545): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (COUNT)",
+          "recommended_query": {
+            "sql": "SELECT species, COUNT(*) FROM penguins GROUP BY species",
+            "description": "Count observations per species",
+            "user": "Dr. Palmer"
+          }
+        }
+      ],
+      "mahalanobis": [
+        {
+          "query_idx": 10,
+          "distance": 1.3012787158898733,
+          "explanation": "Topologically similar (mahalanobis distance: 1.301): same query pattern (AGGREGATION); both aggregate data; share columns: island; use similar aggregations (COUNT); same analyst (Dr. Fraser)",
+          "recommended_query": {
+            "sql": "SELECT island, COUNT(*) FROM penguins GROUP BY island",
+            "description": "Count observations per island",
+            "user": "Dr. Fraser"
+          }
+        },
+        {
+          "query_idx": 14,
+          "distance": 2.101715304715273,
+          "explanation": "Topologically similar (mahalanobis distance: 2.102): same query pattern (AGGREGATION); both aggregate data; share columns: island, species; same analyst (Dr. Fraser)",
+          "recommended_query": {
+            "sql": "SELECT island, species, AVG(bill_length_mm) FROM penguins GROUP BY island, species",
+            "description": "Average bill length by island and species",
+            "user": "Dr. Fraser"
+          }
+        },
+        {
+          "query_idx": 9,
+          "distance": 2.5044071509478893,
+          "explanation": "Topologically similar (mahalanobis distance: 2.504): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (COUNT)",
+          "recommended_query": {
+            "sql": "SELECT species, COUNT(*) FROM penguins GROUP BY species",
+            "description": "Count observations per species",
+            "user": "Dr. Palmer"
+          }
+        }
+      ]
+    }
+  },
+  "query_15": {
+    "query": {
+      "sql": "SELECT p.species, s.scientific_name, AVG(p.body_mass_g) \n                     FROM penguins p JOIN species_info s ON p.species = s.species \n                     GROUP BY p.species",
+      "description": "Average body mass with scientific names",
+      "user": "Dr. Palmer",
+      "timestamp": "2024-01-17 11:30:00",
+      "tables": [
+        "species_info",
+        "penguins"
+      ],
+      "columns": [
+        "body_mass_g",
+        "p",
+        "scientific_name",
+        "species"
+      ],
+      "has_join": true,
+      "has_where": false,
+      "has_group_by": true,
+      "has_order_by": false,
+      "has_limit": false,
+      "num_conditions": 0,
+      "aggregations": [
+        "AVG"
+      ],
+      "query_type": "JOIN",
+      "column_types": {
+        "body_mass_g": "measurement",
+        "p": "unknown",
+        "scientific_name": "categorical",
+        "species": "categorical"
+      }
+    },
+    "recommendations_by_metric": {
+      "euclidean": [
+        {
+          "query_idx": 17,
+          "distance": 9.710475047738402,
+          "explanation": "Topologically similar (euclidean distance: 9.710): same query pattern (JOIN); both use joins; both aggregate data; share columns: p, species; use similar aggregations (AVG)",
+          "recommended_query": {
+            "sql": "SELECT p.species, s.habitat, AVG(p.flipper_length_mm) \n                     FROM penguins p JOIN species_info s ON p.species = s.species \n                     GROUP BY p.species",
+            "description": "Average flipper length with habitat info",
+            "user": "Dr. Williams"
+          }
+        },
+        {
+          "query_idx": 8,
+          "distance": 10.22947164987812,
+          "explanation": "Topologically similar (euclidean distance: 10.229): both aggregate data; share columns: body_mass_g, species; use similar aggregations (AVG)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(body_mass_g) FROM penguins GROUP BY species",
+            "description": "Average body mass by species",
+            "user": "Dr. Williams"
+          }
+        },
+        {
+          "query_idx": 26,
+          "distance": 10.358363017013648,
+          "explanation": "Topologically similar (euclidean distance: 10.358): both aggregate data; share columns: body_mass_g, species; use similar aggregations (AVG); same analyst (Dr. Palmer)",
+          "recommended_query": {
+            "sql": "SELECT researcher, species, AVG(body_mass_g) FROM penguins GROUP BY researcher, species",
+            "description": "Average body mass by researcher and species",
+            "user": "Dr. Palmer"
+          }
+        }
+      ],
+      "cosine": [
+        {
+          "query_idx": 17,
+          "distance": 0.49425668167091175,
+          "explanation": "Topologically similar (cosine distance: 0.494): same query pattern (JOIN); both use joins; both aggregate data; share columns: p, species; use similar aggregations (AVG)",
+          "recommended_query": {
+            "sql": "SELECT p.species, s.habitat, AVG(p.flipper_length_mm) \n                     FROM penguins p JOIN species_info s ON p.species = s.species \n                     GROUP BY p.species",
+            "description": "Average flipper length with habitat info",
+            "user": "Dr. Williams"
+          }
+        },
+        {
+          "query_idx": 16,
+          "distance": 0.7160054831442156,
+          "explanation": "Topologically similar (cosine distance: 0.716): same query pattern (JOIN); both use joins; both aggregate data; share columns: p",
+          "recommended_query": {
+            "sql": "SELECT p.island, i.area_km2, COUNT(*) \n                     FROM penguins p JOIN island_info i ON p.island = i.island \n                     GROUP BY p.island",
+            "description": "Observation counts with island area",
+            "user": "Dr. Fraser"
+          }
+        },
+        {
+          "query_idx": 26,
+          "distance": 0.8402017760959445,
+          "explanation": "Topologically similar (cosine distance: 0.840): both aggregate data; share columns: body_mass_g, species; use similar aggregations (AVG); same analyst (Dr. Palmer)",
+          "recommended_query": {
+            "sql": "SELECT researcher, species, AVG(body_mass_g) FROM penguins GROUP BY researcher, species",
+            "description": "Average body mass by researcher and species",
+            "user": "Dr. Palmer"
+          }
+        }
+      ],
+      "mahalanobis": [
+        {
+          "query_idx": 26,
+          "distance": 4.11408858933854,
+          "explanation": "Topologically similar (mahalanobis distance: 4.114): both aggregate data; share columns: body_mass_g, species; use similar aggregations (AVG); same analyst (Dr. Palmer)",
+          "recommended_query": {
+            "sql": "SELECT researcher, species, AVG(body_mass_g) FROM penguins GROUP BY researcher, species",
+            "description": "Average body mass by researcher and species",
+            "user": "Dr. Palmer"
+          }
+        },
+        {
+          "query_idx": 8,
+          "distance": 4.777416339923246,
+          "explanation": "Topologically similar (mahalanobis distance: 4.777): both aggregate data; share columns: body_mass_g, species; use similar aggregations (AVG)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(body_mass_g) FROM penguins GROUP BY species",
+            "description": "Average body mass by species",
+            "user": "Dr. Williams"
+          }
+        },
+        {
+          "query_idx": 18,
+          "distance": 4.963397099577278,
+          "explanation": "Topologically similar (mahalanobis distance: 4.963): share columns: body_mass_g; use similar aggregations (AVG)",
+          "recommended_query": {
+            "sql": "SELECT AVG(bill_length_mm) FROM penguins WHERE body_mass_g > 4000",
+            "description": "Average bill length for heavy penguins",
+            "user": "Dr. Gorman"
+          }
+        }
+      ]
+    }
+  },
+  "query_20": {
+    "query": {
+      "sql": "SELECT species, AVG(bill_length_mm) \n                     FROM penguins \n                     WHERE body_mass_g > 3500 \n                     GROUP BY species",
+      "description": "Average bill length by species for larger penguins",
+      "user": "Dr. Gorman",
+      "timestamp": "2024-01-15 09:45:00",
+      "tables": [
+        "penguins"
+      ],
+      "columns": [
+        "bill_length_mm",
+        "species"
+      ],
+      "has_join": false,
+      "has_where": true,
+      "has_group_by": true,
+      "has_order_by": false,
+      "has_limit": false,
+      "num_conditions": 1,
+      "aggregations": [
+        "AVG"
+      ],
+      "query_type": "AGGREGATION",
+      "column_types": {
+        "bill_length_mm": "measurement",
+        "species": "categorical"
+      }
+    },
+    "recommendations_by_metric": {
+      "euclidean": [
+        {
+          "query_idx": 5,
+          "distance": 2.4792038871579267,
+          "explanation": "Topologically similar (euclidean distance: 2.479): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG); same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(bill_length_mm) FROM penguins GROUP BY species",
+            "description": "Average bill length by species",
+            "user": "Dr. Gorman"
+          }
+        },
+        {
+          "query_idx": 14,
+          "distance": 5.142731674473231,
+          "explanation": "Topologically similar (euclidean distance: 5.143): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG)",
+          "recommended_query": {
+            "sql": "SELECT island, species, AVG(bill_length_mm) FROM penguins GROUP BY island, species",
+            "description": "Average bill length by island and species",
+            "user": "Dr. Fraser"
+          }
+        },
+        {
+          "query_idx": 8,
+          "distance": 5.213246206512167,
+          "explanation": "Topologically similar (euclidean distance: 5.213): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (AVG)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(body_mass_g) FROM penguins GROUP BY species",
+            "description": "Average body mass by species",
+            "user": "Dr. Williams"
+          }
+        }
+      ],
+      "cosine": [
+        {
+          "query_idx": 5,
+          "distance": 0.1914571037814614,
+          "explanation": "Topologically similar (cosine distance: 0.191): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG); same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(bill_length_mm) FROM penguins GROUP BY species",
+            "description": "Average bill length by species",
+            "user": "Dr. Gorman"
+          }
+        },
+        {
+          "query_idx": 18,
+          "distance": 0.5640455520888895,
+          "explanation": "Topologically similar (cosine distance: 0.564): share columns: bill_length_mm; use similar aggregations (AVG); same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT AVG(bill_length_mm) FROM penguins WHERE body_mass_g > 4000",
+            "description": "Average bill length for heavy penguins",
+            "user": "Dr. Gorman"
+          }
+        },
+        {
+          "query_idx": 6,
+          "distance": 0.649247421186619,
+          "explanation": "Topologically similar (cosine distance: 0.649): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (AVG); same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(bill_depth_mm) FROM penguins GROUP BY species",
+            "description": "Average bill depth by species",
+            "user": "Dr. Gorman"
+          }
+        }
+      ],
+      "mahalanobis": [
+        {
+          "query_idx": 5,
+          "distance": 0.682144946567711,
+          "explanation": "Topologically similar (mahalanobis distance: 0.682): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG); same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(bill_length_mm) FROM penguins GROUP BY species",
+            "description": "Average bill length by species",
+            "user": "Dr. Gorman"
+          }
+        },
+        {
+          "query_idx": 6,
+          "distance": 1.3024146199764222,
+          "explanation": "Topologically similar (mahalanobis distance: 1.302): same query pattern (AGGREGATION); both aggregate data; share columns: species; use similar aggregations (AVG); same analyst (Dr. Gorman)",
+          "recommended_query": {
+            "sql": "SELECT species, AVG(bill_depth_mm) FROM penguins GROUP BY species",
+            "description": "Average bill depth by species",
+            "user": "Dr. Gorman"
+          }
+        },
+        {
+          "query_idx": 14,
+          "distance": 2.3236987499727184,
+          "explanation": "Topologically similar (mahalanobis distance: 2.324): same query pattern (AGGREGATION); both aggregate data; share columns: bill_length_mm, species; use similar aggregations (AVG)",
+          "recommended_query": {
+            "sql": "SELECT island, species, AVG(bill_length_mm) FROM penguins GROUP BY island, species",
+            "description": "Average bill length by island and species",
+            "user": "Dr. Fraser"
+          }
+        }
+      ]
+    }
+  }
+}
